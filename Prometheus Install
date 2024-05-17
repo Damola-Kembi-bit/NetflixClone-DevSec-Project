@@ -1,0 +1,23 @@
+# Create new system user account
+sudo useradd \
+    --system \
+    --no-create-home \
+    --shell /bin/false prometheus
+
+# Download Prometheus
+wget https://github.com/prometheus/prometheus/releases/download/v2.47.1/prometheus-2.47.1.linux-amd64.tar.gz
+
+#Extract file
+tar -xvf prometheus-2.47.1.linux-amd64.tar.gz
+
+#Create a data directory and folder for prometheus config files
+sudo mkdir -p /data /etc/prometheus
+
+#Move prometheus binary and promtool to /usr/local/bin/
+sudo mv prometheus promtool /usr/local/bin/
+
+#Move console libraries to prometheus config directory
+sudo mv consoles/ console_libraries/ /etc/prometheus/
+
+#Set ownership of prometheus config directory and data directory
+sudo chown -R prometheus:prometheus /etc/prometheus/ /data/
