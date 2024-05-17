@@ -1,10 +1,10 @@
-# Create new system user account
+#Create new system user account
 sudo useradd \
     --system \
     --no-create-home \
     --shell /bin/false prometheus
 
-# Download Prometheus
+#Download Prometheus
 wget https://github.com/prometheus/prometheus/releases/download/v2.47.1/prometheus-2.47.1.linux-amd64.tar.gz
 
 #Extract file
@@ -21,3 +21,9 @@ sudo mv consoles/ console_libraries/ /etc/prometheus/
 
 #Set ownership of prometheus config directory and data directory
 sudo chown -R prometheus:prometheus /etc/prometheus/ /data/
+
+#Check version
+prometheus --version
+
+#Create a systemd unit config file for service definition
+sudo vim /etc/systemd/system/prometheus.service
