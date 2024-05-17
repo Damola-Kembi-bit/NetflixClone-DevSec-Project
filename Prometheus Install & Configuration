@@ -19,6 +19,9 @@ sudo mv prometheus promtool /usr/local/bin/
 #Move console libraries to prometheus config directory
 sudo mv consoles/ console_libraries/ /etc/prometheus/
 
+#Move main prometheus configuration file
+sudo mv prometheus.yml /etc/prometheus/prometheus.yml
+
 #Set ownership of prometheus config directory and data directory
 sudo chown -R prometheus:prometheus /etc/prometheus/ /data/
 
