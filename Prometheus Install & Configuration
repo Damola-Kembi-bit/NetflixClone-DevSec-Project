@@ -30,3 +30,11 @@ prometheus --version
 
 #Create a systemd unit config file for service definition
 sudo vim /etc/systemd/system/prometheus.service
+
+#Automatically starts the prometheus after reboot
+sudo systemctl enable prometheus
+
+#Starts the prometheus service
+sudo systemctl start prometheus
+
+
