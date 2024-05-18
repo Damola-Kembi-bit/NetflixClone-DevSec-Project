@@ -31,17 +31,17 @@ prometheus --version
 #Create a systemd unit config file for service definition
 sudo vim /etc/systemd/system/prometheus.service
 
+#Automatically starts the prometheus after reboot
+sudo systemctl enable prometheus
+
+#Starts the prometheus service
+sudo systemctl start prometheus
+
 #Check if config is valid
 promtool check config /etc/prometheus/prometheus.yml
 
 #Use POST request to  reload config
 curl -X POST http://localhost:9090/-/reload
 
-
-#Automatically starts the prometheus after reboot
-sudo systemctl enable prometheus
-
-#Starts the prometheus service
-sudo systemctl start prometheus
 
 
