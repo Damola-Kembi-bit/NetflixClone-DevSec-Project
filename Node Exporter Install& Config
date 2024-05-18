@@ -1,0 +1,24 @@
+#Create a system user for Node Exporter
+sudo useradd \
+    --system \
+    --no-create-home \
+    --shell /bin/false node_exporter
+
+#Download and Extract Node Exporter
+wget https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz
+tar -xvf node_exporter-1.6.1.linux-amd64.tar.gz
+
+#Move binary to /usr/local/bin/
+sudo mv \
+  node_exporter-1.6.1.linux-amd64/node_exporter \
+  /usr/local/bin/
+
+#Check version
+node_exporter --version
+
+#Create a systemd unit file
+sudo vim /etc/systemd/system/node_exporter.service
+
+#Automaticall start the service after reboot, and to start the service
+sudo systemctl enable node_exporter
+sudo systemctl start node_exporter
