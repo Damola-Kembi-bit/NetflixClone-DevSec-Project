@@ -22,3 +22,9 @@ sudo vim /etc/systemd/system/node_exporter.service
 #Automaticall start the service after reboot, and to start the service
 sudo systemctl enable node_exporter
 sudo systemctl start node_exporter
+
+#Add static target to prometheus.yml file
+- job_name: node_export
+    static_configs:
+      - targets: ["localhost:9100"]
+
