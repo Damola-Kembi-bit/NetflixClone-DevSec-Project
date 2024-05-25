@@ -19,7 +19,7 @@ node_exporter --version
 #Create a systemd unit file
 sudo vim /etc/systemd/system/node_exporter.service
 
-#Automaticall start the service after reboot, and to start the service
+#Automatically start the service after reboot, and to start the service
 sudo systemctl enable node_exporter
 sudo systemctl start node_exporter
 
